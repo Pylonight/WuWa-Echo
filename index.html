@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wuthering Waves Echo Strategy</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background-color: #f7f7f7; }
+        h1, h2 { color: #333; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+        th { background-color: #e9e9e9; font-weight: bold; }
+        .lock { background-color: #d4edda; color: #155724; font-weight: 600; } /* Green - Auto Lock */
+        .keep { background-color: #fff3cd; color: #856404; font-weight: 600; } /* Yellow - Manual Keep */
+        .trash { background-color: #f8d7da; color: #721c24; font-weight: 600; } /* Red - Auto Trash */
+        .priority-list { list-style-type: none; padding: 0; }
+        .priority-list li { margin-bottom: 5px; }
+        .priority-MAIN { color: #007bff; font-weight: bold; }
+        .priority-SIDE { color: #ffc107; }
+        .priority-BENCH { color: #6c757d; }
+        .priority-GRADUATED { color: #d9ead3; }
+    </style>
+</head>
+
+<body>
+    <h1>🔊 Wuthering Waves Echo Management Strategy</h1>
+    <p>This dynamic guide processes your personal <code>resonators.json</code> file to generate the optimal Lock/Keep/Trash strategy based on your character priorities.</p>
+    
+    <hr>
+
+    <h2>Character Priority Status</h2>
+    <p>Your current strategy is driven by the following priorities:</p>
+    <ul id="priority-list" class="priority-list">Loading priorities...</ul>
+
+    <hr>
+
+    <h2>1. Stat-Centric Strategy (Auto-Lock/Keep/Trash)</h2>
+    <p>This is the most critical view for bulk inventory management. Find the Echo's main stat (e.g., `3C-FUSION`), and the strategy for every Sonata set is listed.</p>
+    <table id="stat-centric-table">
+        <thead>
+            <tr>
+                <th>Cost / Stat</th>
+                <th class="lock">🟢 AUTO-LOCK (MAIN Priority Character needs it)</th>
+                <th class="keep">🟡 KEEP (SIDE needs it; or MAIN needs it with KEEP strategy as replacement)</th>
+                <th class="trash">🔴 AUTO-TRASH (Only BENCH/GRADUATED need it, or unused)</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <hr>
+
+    <h2>2. Sonata-Centric Strategy (Reference View)</h2>
+    <p>This view shows all required stats for a given Sonata set, based on your entire roster.</p>
+    <table id="sonata-centric-table">
+        <thead>
+            <tr>
+                <th>Sonata Set</th>
+                <th>Required Echo Stats</th>
+                <th>Highest Priority Requiring Character(s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
