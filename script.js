@@ -29,7 +29,7 @@ let resonatorPriorities = {}; // Map of Resonator ID to Priority
 // --- DATA FETCHING & INITIALIZATION ---
 async function loadDataAndRender() {
     // const baseUrl = '';
-    const baseUrl = 'http://pylonight.github.io/WuWa-Echo/';
+    const baseUrl = 'https://pylonight.github.io/WuWa-Echo/';
 
     try {
         // 1. Fetch all data files
