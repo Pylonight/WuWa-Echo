@@ -550,7 +550,7 @@
 			"zh": "椿",
 			"en": "Camellya"
 		},
-		"priority": "MAIN",
+		"priority": "GRADUATED",
 		"sonatas": [
 			{
 				"sonata": "HAVOC_ECLIPSE",
