@@ -1,0 +1,156 @@
+[
+	{
+		"id": "4C-HP",
+		"name": {
+			"zh": "生命值百分比",
+			"en": "HP%"
+		},
+		"cost": 4
+	},
+	{
+		"id": "4C-ATK",
+		"name": {
+			"zh": "攻击力百分比",
+			"en": "ATK%"
+		},
+		"cost": 4
+	},
+	{
+		"id": "4C-DEF",
+		"name": {
+			"zh": "防御力百分比",
+			"en": "DEF%"
+		},
+		"cost": 4
+	},
+	{
+		"id": "4C-CCR",
+		"name": {
+			"zh": "暴击率",
+			"en": "Crit. Rate"
+		},
+		"cost": 4
+	},
+	{
+		"id": "4C-CCD",
+		"name": {
+			"zh": "暴击伤害",
+			"en": "Crit. DMG"
+		},
+		"cost": 4
+	},
+	{
+		"id": "4C-HEALING",
+		"name": {
+			"zh": "治疗效果加成",
+			"en": "Healing Bonus"
+		},
+		"cost": 4
+	},
+
+	{
+		"id": "3C-HP",
+		"name": {
+			"zh": "生命值百分比",
+			"en": "HP%"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-ATK",
+		"name": {
+			"zh": "攻击力百分比",
+			"en": "ATK%"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-DEF",
+		"name": {
+			"zh": "防御力百分比",
+			"en": "DEF%"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-GLACIO",
+		"name": {
+			"zh": "冷凝伤害加成",
+			"en": "Glacio DMG Bonus"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-FUSION",
+		"name": {
+			"zh": "热熔伤害加成",
+			"en": "Fusion DMG Bonus"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-ELECTRO",
+		"name": {
+			"zh": "导电伤害加成",
+			"en": "Electro DMG Bonus"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-AERO",
+		"name": {
+			"zh": "气动伤害加成",
+			"en": "Aero DMG Bonus"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-SPECTRO",
+		"name": {
+			"zh": "衍射伤害加成",
+			"en": "Spectro DMG Bonus"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-HAVOC",
+		"name": {
+			"zh": "湮灭伤害加成",
+			"en": "Havoc DMG Bonus"
+		},
+		"cost": 3
+	},
+	{
+		"id": "3C-REGEN",
+		"name": {
+			"zh": "共鸣效率",
+			"en": "Energy Regen"
+		},
+		"cost": 3
+	},
+
+	{
+		"id": "1C-HP",
+		"name": {
+			"zh": "生命值百分比",
+			"en": "HP%"
+		},
+		"cost": 1
+	},
+	{
+		"id": "1C-ATK",
+		"name": {
+			"zh": "攻击力百分比",
+			"en": "ATK%"
+		},
+		"cost": 1
+	},
+	{
+		"id": "1C-DEF",
+		"name": {
+			"zh": "防御力百分比",
+			"en": "DEF%"
+		},
+		"cost": 1
+	}
+]

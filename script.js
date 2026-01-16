@@ -1,4 +1,8 @@
 // --- PRIORITY DEFINITIONS ---
+const DATA_VERSIONS = {
+    '2.8.0': '2.8 Base',
+    '3.0.0': '3.0 Base'
+};
 const PRIORITY_MAP = {
     'MAIN': 3,
     'SIDE': 2,
@@ -26,17 +30,69 @@ let sonataNames = {}; // Map of Sonata ID to Name
 let resonatorNames = {}; // Map of Resonator ID to Name
 let resonatorPriorities = {}; // Map of Resonator ID to Priority
 
+// --- DOM CONTROL ---
+const versionSelect = document.getElementById('version-select');
+const versionDisplay = document.getElementById('current-version-name');
+
+// --- VERSION CONTROL ---
+function dataFilepath(baseUrl, version, filename) {
+    return baseUrl + 'data/' + version + '/' + filename;
+}
+
+function isNewerVersionThan(l, r) {
+    if (l === undefined) {
+        return false;
+    }
+    if (r === undefined) {
+        return true;
+    }
+
+    const lParts = l.split('.').map(Number);
+    const rParts = r.split('.').map(Number);
+    const maxLength = Math.max(lParts.length, rParts.length);
+    for (let i = 0; i < maxLength; ++i) {
+        const lPart = lParts[i] === undefined ? 0 : lParts[i];
+        const rPart = rParts[i] === undefined ? 0 : rParts[i];
+        if (lPart != rPart) {
+            return lPart > rPart;
+        }
+    }
+    return false;
+}
+
+let newestVersionCache;
+function newestVersion() {
+    if (newestVersionCache !== undefined) {
+        return newestVersionCache;
+    }
+    if (DATA_VERSIONS.length === 0) {
+        throw new Error('No registered version!');
+    }
+
+    let newest;
+    for (const dataVersion in DATA_VERSIONS) {
+        if (isNewerVersionThan(dataVersion, newest)) {
+            newest = dataVersion;
+        }
+    }
+    newestVersionCache = newest;
+    return newestVersionCache;
+}
+
 // --- DATA FETCHING & INITIALIZATION ---
-async function loadDataAndRender() {
+async function loadDataAndRender(version) {
     // const baseUrl = '';
     const baseUrl = 'https://pylonight.github.io/WuWa-Echo/';
 
     try {
+        // 0. Render the version control
+        renderDataVersionDropdown(version);
+
         // 1. Fetch all data files
         const [echoData, resonatorData, sonataData] = await Promise.all([
-            fetch(baseUrl + 'echoes.json').then(res => res.json()),
-            fetch(baseUrl + 'resonators.json').then(res => res.json()),
-            fetch(baseUrl + 'sonatas.json').then(res => res.json()),
+            fetch(dataFilepath(baseUrl, version, 'echoes.json')).then(res => res.json()),
+            fetch(dataFilepath(baseUrl, version, 'resonators.json')).then(res => res.json()),
+            fetch(dataFilepath(baseUrl, version, 'sonatas.json')).then(res => res.json()),
         ]);
 
         // 2. Preprocess to create lookup maps
@@ -57,8 +113,8 @@ async function loadDataAndRender() {
         renderSonataCentricTable(sonataRequirements, resonatorData);
 
     } catch (error) {
-        console.error("Error loading or processing data:", error);
-        document.body.innerHTML = '<h1>Error Loading Data</h1><p>Please ensure all JSON files (resonators.json, echoes.json, sonatas.json) are correctly formatted and accessible.</p>';
+        console.error('Error loading or processing data:', error);
+        document.getElementById('main-display-container').innerHTML = '<h1>Error Loading Data</h1><p>Please ensure all JSON files (resonators.json, echoes.json, sonatas.json) are correctly formatted and accessible.</p>';
     }
 }
 
@@ -177,6 +233,24 @@ function formatSets(setIDs) {
     return setIDs.map(id => sonataNames[id]?.zh || id).join(', ');
 }
 
+function renderDataVersionDropdown(version) {
+    // 1. Sort versions using semantic versioning logic (descending)
+    const sortedVersions = Object.keys(DATA_VERSIONS).sort((l, r) => isNewerVersionThan(l, r) ? -1 : 1);
+
+    // 2. Populate dropdown and set default (newest)
+    versionSelect.length = 0;
+    for (const version of sortedVersions) {
+        const option = document.createElement('option');
+        option.value = version;
+        option.textContent = version;
+        versionSelect.appendChild(option);
+    }
+    versionSelect.value = version;
+
+    // 3. Update the page content
+    versionDisplay.textContent = DATA_VERSIONS[version];
+}
+
 function renderPriorityList(resonatorData) {
     const container = document.getElementById('priority-list');
     if (!container) return;
@@ -258,4 +332,9 @@ function renderSonataCentricTable(sonataRequirements, resonatorData) {
 
 
 // Execute the process on load
-loadDataAndRender();
+loadDataAndRender(newestVersion());
+
+// Listen for selection changes
+versionSelect.addEventListener('change', (e) => {
+    loadDataAndRender(e.target.value);
+});

@@ -19,51 +19,58 @@
         .priority-SIDE { color: #ffc107; }
         .priority-BENCH { color: #6c757d; }
         .priority-GRADUATED { color: #3c8025; }
+        #version-select { padding: 8px; font-size: 1rem; border-radius: 4px; cursor: pointer; }
     </style>
 </head>
 
 <body>
-    <h1>🔊 Wuthering Waves Echo Management Strategy</h1>
-    <p>This dynamic guide processes your personal <code>resonators.json</code> file to generate the optimal Lock/Keep/Trash strategy based on your character priorities.</p>
+    <h1>🔊 Wuthering Waves Echo Management Strategy (<span id="current-version-name">Loading...</span>) </h1>
+    
+    <div class="version-container">
+        <label for="version-select">Current Version:</label>
+        <select id="version-select"></select>
+    </div>
     
     <hr>
 
-    <h2>Character Priority Status</h2>
-    <p>Your current strategy is driven by the following priorities:</p>
-    <ul id="priority-list" class="priority-list">Loading priorities...</ul>
+    <div id="main-display-container">
+        <h2>Character Priority Status</h2>
+        <p>Your current strategy is driven by the following priorities:</p>
+        <ul id="priority-list" class="priority-list">Loading priorities...</ul>
 
-    <hr>
+        <hr>
 
-    <h2>1. Stat-Centric Strategy (Auto-Lock/Keep/Trash)</h2>
-    <p>This is the most critical view for bulk inventory management. Find the Echo's main stat (e.g., `3C-FUSION`), and the strategy for every Sonata set is listed.</p>
-    <table id="stat-centric-table">
-        <thead>
-            <tr>
-                <th>Cost / Stat</th>
-                <th class="lock">🟢 AUTO-LOCK (MAIN Priority Character needs it)</th>
-                <th class="keep">🟡 KEEP (SIDE needs it; or MAIN needs it with KEEP strategy as replacement)</th>
-                <th class="trash">🔴 AUTO-TRASH (Only BENCH/GRADUATED need it, or unused)</th>
-            </tr>
-        </thead>
-        <tbody>
-            </tbody>
-    </table>
+        <h2>1. Stat-Centric Strategy (Auto-Lock/Keep/Trash)</h2>
+        <p>This is the most critical view for bulk inventory management. Find the Echo's main stat (e.g., `3C-FUSION`), and the strategy for every Sonata set is listed.</p>
+        <table id="stat-centric-table">
+            <thead>
+                <tr>
+                    <th>Cost / Stat</th>
+                    <th class="lock">🟢 AUTO-LOCK (MAIN Priority Character needs it)</th>
+                    <th class="keep">🟡 KEEP (SIDE needs it; or MAIN needs it with KEEP strategy as replacement)</th>
+                    <th class="trash">🔴 AUTO-TRASH (Only BENCH/GRADUATED need it, or unused)</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
 
-    <hr>
+        <hr>
 
-    <h2>2. Sonata-Centric Strategy (Reference View)</h2>
-    <p>This view shows all required stats for a given Sonata set, based on your entire roster.</p>
-    <table id="sonata-centric-table">
-        <thead>
-            <tr>
-                <th>Sonata Set</th>
-                <th>Required Echo Stats</th>
-                <th>Highest Priority Requiring Character(s)</th>
-            </tr>
-        </thead>
-        <tbody>
-            </tbody>
-    </table>
+        <h2>2. Sonata-Centric Strategy (Reference View)</h2>
+        <p>This view shows all required stats for a given Sonata set, based on your entire roster.</p>
+        <table id="sonata-centric-table">
+            <thead>
+                <tr>
+                    <th>Sonata Set</th>
+                    <th>Required Echo Stats</th>
+                    <th>Highest Priority Requiring Character(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
 
     <script src="script.js"></script>
 </body>
