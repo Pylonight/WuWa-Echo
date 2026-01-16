@@ -266,6 +266,7 @@ function renderStatCentricTable(statStrategies) {
     const tbody = document.querySelector('#stat-centric-table tbody');
     if (!tbody) return;
 
+    tbody.innerHTML = '';
     allEchoStatIDs.forEach(echoStatID => {
         const strategy = statStrategies[echoStatID];
         const row = tbody.insertRow();
@@ -302,6 +303,7 @@ function renderSonataCentricTable(sonataRequirements, resonatorData) {
     // Sort the sonatas by ID
     // const sortedSonataIDs = Object.keys(sonataRequirements).sort();
 
+    tbody.innerHTML = '';
     allSonataIDs.forEach(sonataID => {
         const requirements = sonataRequirements[sonataID];
         const row = tbody.insertRow();
