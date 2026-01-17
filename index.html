@@ -19,7 +19,13 @@
         .priority-SIDE { color: #ffc107; }
         .priority-BENCH { color: #6c757d; }
         .priority-GRADUATED { color: #3c8025; }
-        #version-select { padding: 8px; font-size: 1rem; border-radius: 4px; cursor: pointer; }
+        .version-select { padding: 8px; font-size: 1rem; border-radius: 4px; cursor: pointer; }
+        .version-select-clear { cursor: pointer; }
+        .crossed-text { text-decoration: line-through 2px; }
+        .rainbow-text { background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .priority-change { margin-left: 1em; }
+        .sonata-card { display: inline-block; padding: 5px 10px; margin: 2px; border: 1px solid; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .dashed-sonata-card { display: inline-block; padding: 5px 10px; margin: 2px; border: 1px dashed; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     </style>
 </head>
 
@@ -27,8 +33,11 @@
     <h1>🔊 Wuthering Waves Echo Management Strategy (<span id="current-version-name">Loading...</span>) </h1>
     
     <div class="version-container">
-        <label for="version-select">Current Version:</label>
-        <select id="version-select"></select>
+        <label for="version-select" class="version-select">🔊 Current Version:</label>
+        <select id="version-select" class="version-select"></select>
+        <label for="version-base-select" class="version-select">🔈 Delta from Version:</label>
+        <select id="version-base-select" class="version-select"></select>
+        <span onclick="clearVersionBaseSelect()" class="version-select-clear">🔄</span>
     </div>
     
     <hr>

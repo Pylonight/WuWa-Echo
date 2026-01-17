@@ -21,18 +21,10 @@ const PRIORITY_CLASSES = {
     'GRADUATED': 'priority-GRADUATED'
 };
 
-// --- DATA CACHE AND LOOKUP MAPS ---
-let allEchoStatIDs = []; // Array of all known Echo Stat IDs
-let echoStatNames = {}; // Map of Echo Stat ID to Name
-let echoStatCosts = {}; // Map of Echo Stat ID to Cost
-let allSonataIDs = []; // Array of all known Sonata IDs
-let sonataNames = {}; // Map of Sonata ID to Name
-let resonatorNames = {}; // Map of Resonator ID to Name
-let resonatorPriorities = {}; // Map of Resonator ID to Priority
-
 // --- DOM CONTROL ---
 const versionSelect = document.getElementById('version-select');
 const versionDisplay = document.getElementById('current-version-name');
+const versionBaseSelect = document.getElementById('version-base-select');
 
 // --- VERSION CONTROL ---
 function dataFilepath(baseUrl, version, filename) {
@@ -80,42 +72,58 @@ function newestVersion() {
 }
 
 // --- DATA FETCHING & INITIALIZATION ---
-async function loadDataAndRender(version) {
+async function loadDataAndRender(version, versionBase) {
     // const baseUrl = '';
     const baseUrl = 'https://pylonight.github.io/WuWa-Echo/';
 
     try {
         // 0. Render the version control
-        renderDataVersionDropdown(version);
+        renderDataVersionDropdown(version, versionBase);
 
         // 1. Fetch all data files
-        const [echoData, resonatorData, sonataData] = await Promise.all([
+        const [echoData, resonatorData, sonataData, echoDataBase, resonatorDataBase, sonataDataBase] = await Promise.all([
             fetch(dataFilepath(baseUrl, version, 'echoes.json')).then(res => res.json()),
             fetch(dataFilepath(baseUrl, version, 'resonators.json')).then(res => res.json()),
             fetch(dataFilepath(baseUrl, version, 'sonatas.json')).then(res => res.json()),
+            versionBase !== undefined ? fetch(dataFilepath(baseUrl, versionBase, 'echoes.json')).then(res => res.json()) : Promise.resolve(undefined),
+            versionBase !== undefined ? fetch(dataFilepath(baseUrl, versionBase, 'resonators.json')).then(res => res.json()) : Promise.resolve(undefined),
+            versionBase !== undefined ? fetch(dataFilepath(baseUrl, versionBase, 'sonatas.json')).then(res => res.json()) : Promise.resolve(undefined),
         ]);
 
         // 2. Preprocess to create lookup maps
-        allEchoStatIDs = echoData.map(s => s.id);
-        echoStatNames = arrayToMap(echoData, 'id', 'name');
-        echoStatCosts = arrayToMap(echoData, 'id', 'cost');
-        allSonataIDs = sonataData.map(s => s.id);
-        sonataNames = arrayToMap(sonataData, 'id', 'name');
-        resonatorNames = arrayToMap(resonatorData, 'id', 'name');
-        resonatorPriorities = arrayToMap(resonatorData, 'id', 'priority');
+        const data = processData(echoData, resonatorData, sonataData);
+        let dataBase;
+        if (versionBase !== undefined) {
+            dataBase = processData(echoDataBase, resonatorDataBase, sonataDataBase);
+        }
 
         // 3. Perform the main data transformations
-        const { statStrategies, sonataRequirements } = generateStrategies(resonatorData, echoData);
+        const current = generateStrategies(data, resonatorData, echoData);
+        if (versionBase !== undefined) {
+            const base = generateStrategies(dataBase, resonatorDataBase, echoDataBase);
+            tagStatStrategiesWithBase(current.statStrategies, base.statStrategies);
+        }
 
         // 4. Render the results
-        renderPriorityList(resonatorData);
-        renderStatCentricTable(statStrategies);
-        renderSonataCentricTable(sonataRequirements, resonatorData);
+        renderPriorityListWithBase(resonatorData, dataBase);
+        renderStatCentricTable(data, current.statStrategies);
+        renderSonataCentricTable(data, current.sonataRequirements, resonatorData);
 
     } catch (error) {
         console.error('Error loading or processing data:', error);
         document.getElementById('main-display-container').innerHTML = '<h1>Error Loading Data</h1><p>Please ensure all JSON files (resonators.json, echoes.json, sonatas.json) are correctly formatted and accessible.</p>';
     }
+}
+
+function processData(echoData, resonatorData, sonataData) {
+    allEchoStatIDs = echoData.map(s => s.id);
+    echoStatNames = arrayToMap(echoData, 'id', 'name');
+    echoStatCosts = arrayToMap(echoData, 'id', 'cost');
+    allSonataIDs = sonataData.map(s => s.id);
+    sonataNames = arrayToMap(sonataData, 'id', 'name');
+    resonatorNames = arrayToMap(resonatorData, 'id', 'name');
+    resonatorPriorities = arrayToMap(resonatorData, 'id', 'priority');
+    return { allEchoStatIDs, echoStatNames, echoStatCosts, allSonataIDs, sonataNames, resonatorNames, resonatorPriorities };
 }
 
 /**
@@ -129,7 +137,7 @@ function arrayToMap(arr, keyField, valueField) {
 }
 
 // --- CORE TRANSFORMATION FUNCTION ---
-function generateStrategies(resonatorData, echoData) {
+function generateStrategies(data, resonatorData, echoData) {
     // Reverse Map: Key = ECHOSTAT_ID__SONATA_ID, Value = { highestStrategy: number }
     const reverseMap = {};
     const sonataRequirements = {}; // For the Sonata-Centric view
@@ -204,11 +212,11 @@ function generateStrategies(resonatorData, echoData) {
     // 2. Generate the final Stat-Centric Strategy (LOCK/KEEP/TRASH)
     const statStrategies = {};
 
-    for (const echoStatID of allEchoStatIDs) {
+    for (const echoStatID of data.allEchoStatIDs) {
         statStrategies[echoStatID] = { lock: [], keep: [], trash: [] };
-        const categories = statStrategies[echoStatID];
+        const categories = statStrategies[echoStatID]; // { keep: [], lock: [], trash: [] }
 
-        for (const sonataID of allSonataIDs) {
+        for (const sonataID of data.allSonataIDs) {
             const key = `${echoStatID}__${sonataID}`;
             
             // Get the requirement data, default to TRASH if no resonator uses it
@@ -227,70 +235,151 @@ function generateStrategies(resonatorData, echoData) {
     return { statStrategies, sonataRequirements };
 }
 
-// --- RENDERING FUNCTIONS ---
-
-function formatSets(setIDs) {
-    return setIDs.map(id => sonataNames[id]?.zh || id).join(', ');
+function generateChangesFromBase(current, base) {
+    const added = [];
+    const removed = [];
+    for (const item of current) {
+        if (!base.includes(item)) {
+            added.push(item);
+        }
+    }
+    for (const item of base) {
+        if (!current.includes(item)) {
+            removed.push(item);
+        }
+    }
+    return { added, removed };
 }
 
-function renderDataVersionDropdown(version) {
+function tagStatStrategiesWithBase(statStrategies, statStrategiesBase) {
+    let changes;
+    for (const echoStatID in statStrategies) {
+        changes = generateChangesFromBase(statStrategies[echoStatID].lock, statStrategiesBase[echoStatID].lock);
+        if (changes.added.length > 0) {
+            statStrategies[echoStatID].lockAdded = changes.added;
+        }
+        if (changes.removed.length > 0) {
+            statStrategies[echoStatID].lockRemoved = changes.removed;
+        }
+
+        changes = generateChangesFromBase(statStrategies[echoStatID].keep, statStrategiesBase[echoStatID].keep);
+        if (changes.added.length > 0) {
+            statStrategies[echoStatID].keepAdded = changes.added;
+        }
+        if (changes.removed.length > 0) {
+            statStrategies[echoStatID].keepRemoved = changes.removed;
+        }
+
+        changes = generateChangesFromBase(statStrategies[echoStatID].trash, statStrategiesBase[echoStatID].trash);
+        if (changes.added.length > 0) {
+            statStrategies[echoStatID].trashAdded = changes.added;
+        }
+        if (changes.removed.length > 0) {
+            statStrategies[echoStatID].trashRemoved = changes.removed;
+        }
+    }
+}
+
+// --- RENDERING FUNCTIONS ---
+
+function formatSets(data, setIDs, addedSetIDs, removedSetIDs) {
+    let html = '';
+    for (const id of data.allSonataIDs) {
+        if (addedSetIDs !== undefined && addedSetIDs.includes(id)) {
+            html += `<div class="sonata-card"><div class="rainbow-text">${data.sonataNames[id]?.zh || id}</div></div>`;
+            continue;
+        }
+        if (setIDs !== undefined && setIDs.includes(id)) {
+            html += `<div class="sonata-card"><div>${data.sonataNames[id]?.zh || id}</div></div>`;
+            continue;
+        }
+        if (removedSetIDs !== undefined && removedSetIDs.includes(id)) {
+            html += `<div class="dashed-sonata-card"><div class="crossed-text">${data.sonataNames[id]?.zh || id}</div></div>`;
+            continue;
+        }
+    }
+    return html;
+}
+
+function renderDataVersionDropdown(version, versionBase) {
     // 1. Sort versions using semantic versioning logic (descending)
     const sortedVersions = Object.keys(DATA_VERSIONS).sort((l, r) => isNewerVersionThan(l, r) ? -1 : 1);
 
-    // 2. Populate dropdown and set default (newest)
+    // 2. Populate dropdown and set selected
     versionSelect.length = 0;
-    for (const version of sortedVersions) {
+    for (const sortedVersion of sortedVersions) {
         const option = document.createElement('option');
-        option.value = version;
-        option.textContent = version;
+        option.value = sortedVersion;
+        option.textContent = sortedVersion;
         versionSelect.appendChild(option);
     }
     versionSelect.value = version;
+
+    versionBaseSelect.length = 0;
+    for (const sortedVersion of sortedVersions) {
+        const option = document.createElement('option');
+        option.value = sortedVersion;
+        option.textContent = sortedVersion;
+        option.disabled = !isNewerVersionThan(version, sortedVersion);
+        versionBaseSelect.appendChild(option);
+    }
+    versionBaseSelect.value = versionBase;
 
     // 3. Update the page content
     versionDisplay.textContent = DATA_VERSIONS[version];
 }
 
-function renderPriorityList(resonatorData) {
+function renderPriorityListWithBase(resonatorData, dataBase) {
     const container = document.getElementById('priority-list');
     if (!container) return;
 
-    const listHtml = resonatorData.map(c => 
-        `<li class="${PRIORITY_CLASSES[c.priority]}">${c.name.zh} (${c.id}) is set to <strong>${c.priority}</strong></li>`
-    ).join('');
+    const listHtml = resonatorData.map(c => {
+        if (dataBase === undefined) {
+            return `<li class="${PRIORITY_CLASSES[c.priority]}">${c.name.zh} (${c.id}) is set to <strong>${c.priority}</strong></li>`;
+        }
+        if (!(c.id in dataBase.resonatorNames)) {
+            return `<li class="${PRIORITY_CLASSES[c.priority]}">${c.name.zh} (${c.id}) is set to <strong>${c.priority}</strong>` +
+                `<strong class="rainbow-text priority-change">NEW</strong></li>`;
+        }
+        if (c.priority !== dataBase.resonatorPriorities[c.id]) {
+            return `<li class="${PRIORITY_CLASSES[c.priority]}">${c.name.zh} (${c.id}) is set to <strong>${c.priority}</strong>` +
+                `<strong class="crossed-text priority-change ${PRIORITY_CLASSES[dataBase.resonatorPriorities[c.id]]}">${dataBase.resonatorPriorities[c.id]}</strong></li>`;
+        }
+        return `<li class="${PRIORITY_CLASSES[c.priority]}">${c.name.zh} (${c.id}) is set to <strong>${c.priority}</strong></li>`;
+    }).join('');
 
     container.innerHTML = listHtml;
 }
 
-function renderStatCentricTable(statStrategies) {
+function renderStatCentricTable(data, statStrategies) {
     const tbody = document.querySelector('#stat-centric-table tbody');
     if (!tbody) return;
 
     tbody.innerHTML = '';
-    allEchoStatIDs.forEach(echoStatID => {
+    data.allEchoStatIDs.forEach(echoStatID => {
         const strategy = statStrategies[echoStatID];
         const row = tbody.insertRow();
         
-        row.insertCell().innerHTML = ('Cost' + echoStatCosts[echoStatID] + '<br>' + echoStatNames[echoStatID]?.zh) || echoStatID;
+        row.insertCell().innerHTML = ('Cost' + data.echoStatCosts[echoStatID] + '<br>' + data.echoStatNames[echoStatID]?.zh) || echoStatID;
 
         // Auto-Lock Cell
         const lockCell = row.insertCell();
         lockCell.className = 'lock';
-        lockCell.textContent = formatSets(strategy.lock);
+        lockCell.innerHTML = formatSets(data, strategy.lock, strategy.lockAdded, strategy.lockRemoved);
 
         // Keep Cell
         const keepCell = row.insertCell();
         keepCell.className = 'keep';
-        keepCell.textContent = formatSets(strategy.keep);
+        keepCell.innerHTML = formatSets(data, strategy.keep, strategy.keepAdded, strategy.keepRemoved);
 
         // Trash Cell
         const trashCell = row.insertCell();
         trashCell.className = 'trash';
-        trashCell.textContent = formatSets(strategy.trash);
+        trashCell.innerHTML = formatSets(data, strategy.trash, strategy.trashAdded, strategy.trashRemoved);
     });
 }
 
-function renderSonataCentricTable(sonataRequirements, resonatorData) {
+function renderSonataCentricTable(data, sonataRequirements, resonatorData) {
     const tbody = document.querySelector('#sonata-centric-table tbody');
     if (!tbody) return;
 
@@ -304,18 +393,19 @@ function renderSonataCentricTable(sonataRequirements, resonatorData) {
     // const sortedSonataIDs = Object.keys(sonataRequirements).sort();
 
     tbody.innerHTML = '';
-    allSonataIDs.forEach(sonataID => {
+    data.allSonataIDs.forEach(sonataID => {
         const requirements = sonataRequirements[sonataID];
         const row = tbody.insertRow();
         
         // 1. Sonata Name
-        row.insertCell().textContent = sonataNames[sonataID]?.zh || sonataID;
+        row.insertCell().textContent = data.sonataNames[sonataID]?.zh || sonataID;
 
         // 2. Required Echo Stats
         // const echoStats = Object.keys(requirements).map(echoStatID => {
-        const echoStats = allEchoStatIDs.filter(echoStatID => echoStatID in requirements).map(echoStatID => {
-            const resonatorList = Array.from(requirements[echoStatID]?.requiredBy || []).map(resonatorID => `<span class="${PRIORITY_CLASSES[resonatorPriorities[resonatorID]]}">${resonatorNames[resonatorID].zh}</span>`).join(', ');
-            const statName = ('Cost' + echoStatCosts[echoStatID] + ' ' + echoStatNames[echoStatID]?.zh) || echoStatID;;
+        const echoStats = data.allEchoStatIDs.filter(echoStatID => echoStatID in requirements).map(echoStatID => {
+            const resonatorList = Array.from(requirements[echoStatID]?.requiredBy || []).map(resonatorID =>
+                `<span class="${PRIORITY_CLASSES[data.resonatorPriorities[resonatorID]]}">${data.resonatorNames[resonatorID].zh}</span>`).join(', ');
+            const statName = ('Cost' + data.echoStatCosts[echoStatID] + ' ' + data.echoStatNames[echoStatID]?.zh) || echoStatID;;
             return `<strong>${statName}</strong> (Used by: ${resonatorList})`;
         }).join('<br>');
         row.insertCell().innerHTML = echoStats;
@@ -334,9 +424,18 @@ function renderSonataCentricTable(sonataRequirements, resonatorData) {
 
 
 // Execute the process on load
-loadDataAndRender(newestVersion());
+loadDataAndRender(newestVersion(), undefined);
 
 // Listen for selection changes
 versionSelect.addEventListener('change', (e) => {
-    loadDataAndRender(e.target.value);
+    loadDataAndRender(e.target.value, versionBaseSelect.value);
 });
+
+versionBaseSelect.addEventListener('change', (e) => {
+    loadDataAndRender(versionSelect.value, e.target.value);
+});
+
+function clearVersionBaseSelect() {
+    versionBaseSelect.value = undefined;
+    loadDataAndRender(versionSelect.value, undefined);
+}
