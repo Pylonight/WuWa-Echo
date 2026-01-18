@@ -1,0 +1,1109 @@
+[
+	{
+		"id": "ROVER-SPECTRO",
+		"name": {
+			"zh": "光主",
+			"en": "Rover (Spectro)"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "YANGYANG",
+		"name": {
+			"zh": "秧秧",
+			"en": "Yangyang"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CHIXIA",
+		"name": {
+			"zh": "炽霞",
+			"en": "Chixia"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOLTEN_RIFT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "BAIZHI",
+		"name": {
+			"zh": "白芷",
+			"en": "Baizhi"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-HP" },
+					{ "echo": "4C-HEALING" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-HP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "SANHUA",
+		"name": {
+			"zh": "散华",
+			"en": "Sanhua"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-GLACIO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "MORTEFI",
+		"name": {
+			"zh": "莫特斐",
+			"en": "Mortefi"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "EMPYREAN_ANTHEM",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-FUSION", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "JIANXIN",
+		"name": {
+			"zh": "鉴心",
+			"en": "Jianxin"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "VERINA",
+		"name": {
+			"zh": "维里奈",
+			"en": "Verina"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-ATK" },
+					{ "echo": "4C-HEALING" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-ATK", "strategy": "KEEP" },
+					{ "echo": "4C-HEALING", "strategy": "KEEP" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "ENCORE",
+		"name": {
+			"zh": "安可",
+			"en": "Encore"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "MOLTEN_RIFT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "AALTO",
+		"name": {
+			"zh": "秋水",
+			"en": "Aalto"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "DANJIN",
+		"name": {
+			"zh": "丹瑾",
+			"en": "Danjin"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MIDNIGHT_VEIL",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-HAVOC", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "TAOQI",
+		"name": {
+			"zh": "桃祈",
+			"en": "Taoqi"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-DEF" },
+					{ "echo": "3C-DEF" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-DEF" }
+				]
+			}
+		]
+	},
+	{
+		"id": "YUANWU",
+		"name": {
+			"zh": "渊武",
+			"en": "Yuanwu"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-DEF", "strategy": "KEEP" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-DEF" }
+				]
+			},
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-DEF", "strategy": "KEEP" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-DEF" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CALCHARO",
+		"name": {
+			"zh": "卡卡罗",
+			"en": "Calcharo"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "VOID_THUNDER",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "LINGYANG",
+		"name": {
+			"zh": "凌阳",
+			"en": "Lingyang"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "LINGERING_TUNES",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-GLACIO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "FROSTY_RESOLVE",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-GLACIO", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			},
+			{
+				"sonata": "FREEZING_FROST",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-GLACIO", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "JIYAN",
+		"name": {
+			"zh": "忌炎",
+			"en": "Jiyan"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "SIERRA_GALE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "ROVER-HAVOC",
+		"name": {
+			"zh": "暗主",
+			"en": "Rover (Havoc)"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "HAVOC_ECLIPSE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "YINLIN",
+		"name": {
+			"zh": "吟霖",
+			"en": "Yinlin"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "JINHSI",
+		"name": {
+			"zh": "今汐",
+			"en": "Jinhsi"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "CELESTIAL_LIGHT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CHANGLI",
+		"name": {
+			"zh": "长离",
+			"en": "Changli"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "MOLTEN_RIFT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "ZHEZHI",
+		"name": {
+			"zh": "折枝",
+			"en": "Zhezhi"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "EMPYREAN_ANTHEM",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-GLACIO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-GLACIO", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "XIANGLI_YAO",
+		"name": {
+			"zh": "相里要",
+			"en": "Xiangli Yao"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "VOID_THUNDER",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "SHOREKEEPER",
+		"name": {
+			"zh": "守岸人",
+			"en": "Shorekeeper"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-HP" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HP", "strategy": "KEEP" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-HP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "YOUHU",
+		"name": {
+			"zh": "釉瑚",
+			"en": "Youhu"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-HEALING" },
+					{ "echo": "3C-ATK" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "LINGERING_TUNES",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-ATK", "strategy": "KEEP" },
+					{ "echo": "3C-ELECTRO", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CAMELLYA",
+		"name": {
+			"zh": "椿",
+			"en": "Camellya"
+		},
+		"priority": "GRADUATED",
+		"sonatas": [
+			{
+				"sonata": "HAVOC_ECLIPSE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "LUMI",
+		"name": {
+			"zh": "灯灯",
+			"en": "LUMI"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CARLOTTA",
+		"name": {
+			"zh": "珂莱塔",
+			"en": "Carlotta"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "FROSTY_RESOLVE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-GLACIO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "ROCCIA",
+		"name": {
+			"zh": "洛可可",
+			"en": "Roccia"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "MIDNIGHT_VEIL",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "PHOEBE",
+		"name": {
+			"zh": "菲比",
+			"en": "Phoebe"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "ETERNAL_RADIANCE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "BRANT",
+		"name": {
+			"zh": "布兰特",
+			"en": "Brant"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "MOLTEN_RIFT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "TIDEBREAKING_COURAGE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION", "strategy": "KEEP" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CANTARELLA",
+		"name": {
+			"zh": "坎特蕾拉",
+			"en": "Cantarella"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "MIDNIGHT_VEIL",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-HAVOC", "strategy": "KEEP" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			},
+			{
+				"sonata": "EMPYREAN_ANTHEM",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP" },
+					{ "echo": "4C-CCD", "strategy": "KEEP" },
+					{ "echo": "3C-HAVOC", "strategy": "KEEP" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK", "strategy": "KEEP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "ROVER-AERO",
+		"name": {
+			"zh": "风主",
+			"en": "Rover (Aero)"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "WINDWARD_PILGRIMAGE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "ZANI",
+		"name": {
+			"zh": "赞妮",
+			"en": "Zani"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "ETERNAL_RADIANCE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CIACCONA",
+		"name": {
+			"zh": "夏空",
+			"en": "Ciaccona"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "GUSTS_OF_WELKIN",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CARTETHYIA",
+		"name": {
+			"zh": "卡提希娅",
+			"en": "Cartethyia"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "WINDWARD_PILGRIMAGE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "1C-HP" }
+				]
+			}
+		]
+	},
+	{
+		"id": "LUPA",
+		"name": {
+			"zh": "露帕",
+			"en": "Lupa"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "FLAMING_CLAWPRINT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "PHROLOVA",
+		"name": {
+			"zh": "弗洛洛",
+			"en": "Phrolova"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "DREAM_OF_THE_LOST",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "HAVOC_ECLIPSE",
+				"echoes": [
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MIDNIGHT_VEIL",
+				"echoes": [
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "AUGUSTA",
+		"name": {
+			"zh": "奥古斯塔",
+			"en": "Augusta"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "CROWN_OF_VALOR",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "VOID_THUNDER",
+				"echoes": [
+					{ "echo": "3C-ELECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "IUNO",
+		"name": {
+			"zh": "尤诺",
+			"en": "Iuno"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "CROWN_OF_VALOR",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "SIERRA_GALE",
+				"echoes": [
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "GUSTS_OF_WELKIN",
+				"echoes": [
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "WINDWARD_PILGRIMAGE",
+				"echoes": [
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR", "strategy": "KEEP"  },
+					{ "echo": "4C-CCD", "strategy": "KEEP"  },
+					{ "echo": "3C-AERO", "strategy": "KEEP"  },
+					{ "echo": "1C-ATK", "strategy": "KEEP"  }
+				]
+			}
+		]
+	},
+	{
+		"id": "GALBRENA",
+		"name": {
+			"zh": "嘉贝莉娜",
+			"en": "Galbrena"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "FLAMEWINGS_SHADOW",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MOLTEN_RIFT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "FLAMING_CLAWPRINT",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "QIUYUAN",
+		"name": {
+			"zh": "仇远",
+			"en": "Qiuyuan"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "LAW_OF_HARMONY",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "SIERRA_GALE",
+				"echoes": [
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "GUSTS_OF_WELKIN",
+				"echoes": [
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "WINDWARD_PILGRIMAGE",
+				"echoes": [
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MOONLIT_CLOUDS",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-AERO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "CHISA",
+		"name": {
+			"zh": "千咲",
+			"en": "Chisa"
+		},
+		"priority": "BENCH",
+		"sonatas": [
+			{
+				"sonata": "THREAD_OF_SEVERED_FATE",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "HAVOC_ECLIPSE",
+				"echoes": [
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "MIDNIGHT_VEIL",
+				"echoes": [
+					{ "echo": "3C-HAVOC" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "BULING",
+		"name": {
+			"zh": "卜灵",
+			"en": "Buling"
+		},
+		"priority": "SIDE",
+		"sonatas": [
+			{
+				"sonata": "REJUVENATING_GLOW",
+				"echoes": [
+					{ "echo": "4C-HEALING" },
+					{ "echo": "3C-ATK" },
+					{ "echo": "3C-REGEN", "strategy": "KEEP" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "LYNAE",
+		"name": {
+			"zh": "琳奈",
+			"en": "Lynae"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "PACT_OF_NEONLIGHT_LEAP",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			},
+			{
+				"sonata": "RITE_OF_GILDED_REVELATION",
+				"echoes": [
+					{ "echo": "4C-CCR" },
+					{ "echo": "4C-CCD" },
+					{ "echo": "3C-SPECTRO" },
+					{ "echo": "1C-ATK" }
+				]
+			}
+		]
+	},
+	{
+		"id": "MORNYE",
+		"name": {
+			"zh": "莫宁",
+			"en": "Mornye"
+		},
+		"priority": "MAIN",
+		"sonatas": [
+			{
+				"sonata": "HALO_OF_STARRY_RADIANCE",
+				"echoes": [
+					{ "echo": "4C-DEF" },
+					{ "echo": "3C-FUSION" },
+					{ "echo": "3C-REGEN" },
+					{ "echo": "1C-DEF" }
+				]
+			}
+		]
+	}
+]

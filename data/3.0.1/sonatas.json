@@ -1,0 +1,177 @@
+[
+	{
+		"id": "FREEZING_FROST",
+		"name": {
+			"zh": "凝夜白霜",
+			"en": "Freezing Frost"
+		}
+	},
+	{
+		"id": "MOLTEN_RIFT",
+		"name": {
+			"zh": "熔山裂谷",
+			"en": "Molten Rift"
+		}
+	},
+	{
+		"id": "VOID_THUNDER",
+		"name": {
+			"zh": "彻空冥雷",
+			"en": "Void Thunder"
+		}
+	},
+	{
+		"id": "SIERRA_GALE",
+		"name": {
+			"zh": "啸谷长风",
+			"en": "Sierra Gale"
+		}
+	},
+	{
+		"id": "CELESTIAL_LIGHT",
+		"name": {
+			"zh": "浮星祛暗",
+			"en": "Celestial Light"
+		}
+	},
+	{
+		"id": "HAVOC_ECLIPSE",
+		"name": {
+			"zh": "沉日劫明",
+			"en": "Havoc Eclipse"
+		}
+	},
+	{
+		"id": "REJUVENATING_GLOW",
+		"name": {
+			"zh": "隐世回光",
+			"en": "Rejuvenating Glow"
+		}
+	},
+	{
+		"id": "MOONLIT_CLOUDS",
+		"name": {
+			"zh": "轻云出月",
+			"en": "Moonlit Clouds"
+		}
+	},
+	{
+		"id": "LINGERING_TUNES",
+		"name": {
+			"zh": "不绝余音",
+			"en": "Lingering Tunes"
+		}
+	},
+	{
+		"id": "FROSTY_RESOLVE",
+		"name": {
+			"zh": "凌冽决断之心",
+			"en": "Frosty Resolve"
+		}
+	},
+	{
+		"id": "ETERNAL_RADIANCE",
+		"name": {
+			"zh": "此间永驻之光",
+			"en": "Eternal Radiance"
+		}
+	},
+	{
+		"id": "MIDNIGHT_VEIL",
+		"name": {
+			"zh": "幽夜隐匿之帷",
+			"en": "Midnight Veil"
+		}
+	},
+	{
+		"id": "EMPYREAN_ANTHEM",
+		"name": {
+			"zh": "高天共奏之曲",
+			"en": "Empyrean Anthem"
+		}
+	},
+	{
+		"id": "TIDEBREAKING_COURAGE",
+		"name": {
+			"zh": "无惧浪涛之勇",
+			"en": "Tidebreaking Courage"
+		}
+	},
+	{
+		"id": "GUSTS_OF_WELKIN",
+		"name": {
+			"zh": "流云逝尽之空",
+			"en": "Gusts of Welkin"
+		}
+	},
+	{
+		"id": "WINDWARD_PILGRIMAGE",
+		"name": {
+			"zh": "愿戴荣光之旅",
+			"en": "Windward Pilgrimage"
+		}
+	},
+	{
+		"id": "FLAMING_CLAWPRINT",
+		"name": {
+			"zh": "奔狼燎原之焰",
+			"en": "Flaming Clawprint"
+		}
+	},
+	{
+		"id": "DREAM_OF_THE_LOST",
+		"name": {
+			"zh": "失序彼岸之梦",
+			"en": "Dream of the Lost"
+		}
+	},
+	{
+		"id": "CROWN_OF_VALOR",
+		"name": {
+			"zh": "荣斗铸锋之冠",
+			"en": "Crown of Valor"
+		}
+	},
+	{
+		"id": "LAW_OF_HARMONY",
+		"name": {
+			"zh": "息界同调之律",
+			"en": "Law of Harmony"
+		}
+	},
+	{
+		"id": "FLAMEWINGS_SHADOW",
+		"name": {
+			"zh": "焚羽猎魔之影",
+			"en": "Flamewing's Shadow"
+		}
+	},
+	{
+		"id": "THREAD_OF_SEVERED_FATE",
+		"name": {
+			"zh": "命理崩毁之弦",
+			"en": "Thread of Severed Fate"
+		}
+	},
+	{
+		"id": "PACT_OF_NEONLIGHT_LEAP",
+		"name": {
+			"zh": "逆光跃彩之约",
+			"en": "Pact of Neonlight Leap"
+		}
+	},
+	{
+		"id": "HALO_OF_STARRY_RADIANCE",
+		"name": {
+			"zh": "星构寻辉之环",
+			"en": "Halo of Starry Radiance"
+		}
+	},
+	{
+		"id": "RITE_OF_GILDED_REVELATION",
+		"name": {
+			"zh": "流金溯真之式",
+			"en": "Rite of Gilded Revelation"
+		}
+	}
+]
