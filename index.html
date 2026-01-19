@@ -10,9 +10,9 @@
         table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
         th { background-color: #e9e9e9; font-weight: bold; }
-        .lock { background-color: #d4edda; color: #155724; font-weight: 600; } /* Green - Auto Lock */
-        .keep { background-color: #fff3cd; color: #856404; font-weight: 600; } /* Yellow - Manual Keep */
-        .trash { background-color: #f8d7da; color: #721c24; font-weight: 600; } /* Red - Auto Trash */
+        .strategy-lock { background-color: #d4edda; color: #155724; font-weight: 600; } /* Green - Auto Lock */
+        .strategy-keep { background-color: #fff3cd; color: #856404; font-weight: 600; } /* Yellow - Manual Keep */
+        .strategy-trash { background-color: #f8d7da; color: #721c24; font-weight: 600; } /* Red - Auto Trash */
         .priority-list { list-style-type: none; padding: 0; }
         .priority-list li { margin-bottom: 5px; }
         .priority-MAIN { color: #007bff; font-weight: bold; }
@@ -55,9 +55,9 @@
             <thead>
                 <tr>
                     <th>Cost / Stat</th>
-                    <th class="lock">🟢 AUTO-LOCK (MAIN Priority Character needs it)</th>
-                    <th class="keep">🟡 KEEP (SIDE needs it; or MAIN needs it with KEEP strategy as replacement)</th>
-                    <th class="trash">🔴 AUTO-TRASH (Only BENCH/GRADUATED need it, or unused)</th>
+                    <th class="strategy-lock">🟢 AUTO-LOCK (MAIN Priority Character needs it)</th>
+                    <th class="strategy-keep">🟡 KEEP (SIDE needs it; or MAIN needs it with KEEP strategy as replacement)</th>
+                    <th class="strategy-trash">🔴 AUTO-TRASH (Only BENCH/GRADUATED need it, or unused)</th>
                 </tr>
             </thead>
             <tbody>

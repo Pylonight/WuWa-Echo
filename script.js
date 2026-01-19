@@ -21,6 +21,11 @@ const PRIORITY_CLASSES = {
     'BENCH': 'priority-BENCH',
     'GRADUATED': 'priority-GRADUATED'
 };
+const STRATEGY_CLASSES = {
+    'LOCK': 'strategy-lock',
+    'KEEP': 'strategy-keep',
+    'TRASH': 'strategy-trash'
+};
 
 // --- DOM CONTROL ---
 const versionSelect = document.getElementById('version-select');
@@ -122,9 +127,10 @@ function processData(echoData, resonatorData, sonataData) {
     echoStatCosts = arrayToMap(echoData, 'id', 'cost');
     allSonataIDs = sonataData.map(s => s.id);
     sonataNames = arrayToMap(sonataData, 'id', 'name');
+    sonataLowestStrategies = arrayToMap(sonataData, 'id', 'lowestStrategy');
     resonatorNames = arrayToMap(resonatorData, 'id', 'name');
     resonatorPriorities = arrayToMap(resonatorData, 'id', 'priority');
-    return { allEchoStatIDs, echoStatNames, echoStatCosts, allSonataIDs, sonataNames, resonatorNames, resonatorPriorities };
+    return { allEchoStatIDs, echoStatNames, echoStatCosts, allSonataIDs, sonataNames, sonataLowestStrategies, resonatorNames, resonatorPriorities };
 }
 
 /**
@@ -159,7 +165,7 @@ function generateStrategies(data, resonatorData, echoData) {
 
             for (const echoRequirement of sonataRequirement.echoes) {
                 const echoStatID = echoRequirement.echo;
-                const statInitStrategy = STRATEGY_MAP[echoRequirement.strategy || 'LOCK']; // "KEEP" or "LOCK" if undefined
+                const statInitStrategy = STRATEGY_MAP[echoRequirement.strategy || 'LOCK']; // "LOCK" if undefined
                 const key = `${echoStatID}__${sonataID}`;
 
                 // --- 1a: Calculate final stat strategy ---
@@ -220,8 +226,8 @@ function generateStrategies(data, resonatorData, echoData) {
         for (const sonataID of data.allSonataIDs) {
             const key = `${echoStatID}__${sonataID}`;
             
-            // Get the requirement data, default to TRASH if no resonator uses it
-            const req = reverseMap[key] || { highestStrategy: STRATEGY_MAP.TRASH };
+            // Get the requirement data, default to sonata's lowest strategy (TRASH if not specified) if no resonator uses it
+            const req = reverseMap[key] || { highestStrategy: STRATEGY_MAP[data.sonataLowestStrategies[sonataID]] || STRATEGY_MAP.TRASH };
             
             if (req.highestStrategy === STRATEGY_MAP.LOCK) {
                 categories.lock.push(sonataID);
@@ -324,7 +330,9 @@ function renderDataVersionDropdown(version, versionBase) {
         option.disabled = !isNewerVersionThan(version, sortedVersion);
         versionBaseSelect.appendChild(option);
     }
-    versionBaseSelect.value = versionBase;
+    if (isNewerVersionThan(version, versionBase)) {
+        versionBaseSelect.value = versionBase;
+    }
 
     // 3. Update the page content
     versionDisplay.textContent = DATA_VERSIONS[version];
@@ -365,17 +373,17 @@ function renderStatCentricTable(data, statStrategies) {
 
         // Auto-Lock Cell
         const lockCell = row.insertCell();
-        lockCell.className = 'lock';
+        lockCell.className = STRATEGY_CLASSES['LOCK'];
         lockCell.innerHTML = formatSets(data, strategy.lock, strategy.lockAdded, strategy.lockRemoved);
 
         // Keep Cell
         const keepCell = row.insertCell();
-        keepCell.className = 'keep';
+        keepCell.className = STRATEGY_CLASSES['KEEP'];
         keepCell.innerHTML = formatSets(data, strategy.keep, strategy.keepAdded, strategy.keepRemoved);
 
         // Trash Cell
         const trashCell = row.insertCell();
-        trashCell.className = 'trash';
+        trashCell.className = STRATEGY_CLASSES['TRASH'];
         trashCell.innerHTML = formatSets(data, strategy.trash, strategy.trashAdded, strategy.trashRemoved);
     });
 }
@@ -399,7 +407,11 @@ function renderSonataCentricTable(data, sonataRequirements, resonatorData) {
         const row = tbody.insertRow();
         
         // 1. Sonata Name
-        row.insertCell().textContent = data.sonataNames[sonataID]?.zh || sonataID;
+        if (data.sonataLowestStrategies[sonataID] === undefined) {
+            row.insertCell().innerHTML = `<span>${data.sonataNames[sonataID]?.zh || sonataID}</span>`;
+        } else {
+            row.insertCell().innerHTML = `<span class="${STRATEGY_CLASSES[data.sonataLowestStrategies[sonataID]]}">${data.sonataNames[sonataID]?.zh || sonataID}</span>`;
+        }
 
         // 2. Required Echo Stats
         // const echoStats = Object.keys(requirements).map(echoStatID => {
@@ -429,14 +441,13 @@ loadDataAndRender(newestVersion(), undefined);
 
 // Listen for selection changes
 versionSelect.addEventListener('change', (e) => {
-    loadDataAndRender(e.target.value, versionBaseSelect.value);
+    loadDataAndRender(e.target.value, versionBaseSelect.selectedIndex > 0 ? versionBaseSelect.value : undefined);
 });
 
 versionBaseSelect.addEventListener('change', (e) => {
-    loadDataAndRender(versionSelect.value, e.target.value);
+    loadDataAndRender(versionSelect.selectedIndex > 0 ? versionSelect.value : newestVersion(), e.target.value);
 });
 
 function clearVersionBaseSelect() {
-    versionBaseSelect.value = undefined;
-    loadDataAndRender(versionSelect.value, undefined);
+    loadDataAndRender(versionSelect.selectedIndex > 0 ? versionSelect.value : newestVersion(), undefined);
 }

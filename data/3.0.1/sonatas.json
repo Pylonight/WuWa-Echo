@@ -158,20 +158,23 @@
 		"name": {
 			"zh": "逆光跃彩之约",
 			"en": "Pact of Neonlight Leap"
-		}
+		},
+		"lowestStrategy": "KEEP"
 	},
 	{
 		"id": "HALO_OF_STARRY_RADIANCE",
 		"name": {
 			"zh": "星构寻辉之环",
 			"en": "Halo of Starry Radiance"
-		}
+		},
+		"lowestStrategy": "KEEP"
 	},
 	{
 		"id": "RITE_OF_GILDED_REVELATION",
 		"name": {
 			"zh": "流金溯真之式",
 			"en": "Rite of Gilded Revelation"
-		}
+		},
+		"lowestStrategy": "KEEP"
 	}
 ]
