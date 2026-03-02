@@ -404,7 +404,7 @@ function renderSonataCentricTable(data, sonataRequirements, resonatorData) {
 
     tbody.innerHTML = '';
     data.allSonataIDs.forEach(sonataID => {
-        const requirements = sonataRequirements[sonataID];
+        const requirements = sonataRequirements[sonataID] || {};
         const row = tbody.insertRow();
         
         // 1. Sonata Name
@@ -415,7 +415,6 @@ function renderSonataCentricTable(data, sonataRequirements, resonatorData) {
         }
 
         // 2. Required Echo Stats
-        // const echoStats = Object.keys(requirements).map(echoStatID => {
         const echoStats = data.allEchoStatIDs.filter(echoStatID => echoStatID in requirements).map(echoStatID => {
             const resonatorList = Array.from(requirements[echoStatID]?.requiredBy || []).map(resonatorID =>
                 `<span class="${PRIORITY_CLASSES[data.resonatorPriorities[resonatorID]]}">${data.resonatorNames[resonatorID].zh}</span>`).join(', ');
