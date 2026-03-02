@@ -1,8 +1,9 @@
 // --- PRIORITY DEFINITIONS ---
 const DATA_VERSIONS = {
-    '2.8.0': '2.8 Base',
-    '3.0.0': '3.0 Base',
-    '3.0.1': '3.0 Augusta/Chisa'
+    '2.8.0': '2.8 Chisa',
+    '3.0.0': '3.0 Lynae/Mornye',
+    '3.0.1': '3.0 Augusta/Chisa',
+    '3.1.0': '3.1 Aemeath'
 };
 const PRIORITY_MAP = {
     'MAIN': 3,
